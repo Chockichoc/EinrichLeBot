@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python2
 # -*- coding: utf8 -*-
 
@@ -10,7 +11,7 @@ import codecs
 class BotModeration(ircbot.SingleServerIRCBot):
 	def __init__(self):
         	ircbot.SingleServerIRCBot.__init__(self, [("irc.chockichoc.fr", 6667)],
-                                           "Einrich_le_bot", "histobot")
+                                           "Einrich_le_bot_dev", "histobot")
 		self.availableCmd = ["!histo"]        
 
 	def on_welcome(self, serv, ev):
@@ -26,8 +27,8 @@ class BotModeration(ircbot.SingleServerIRCBot):
         	self.message = ev.arguments()[0].decode('utf-8', errors='replace')
 		self.serv = serv
 		self.find_cmd_on_string(self.message)
-		info = '<'+time.strftime('%H:%M',time.localtime()) +"> "+self.auteur + ' : ' + self.message + '\n'
-      		self.write_file("/var/www/html","histo.txt", info)
+		info = '['+time.strftime('%d/%m/%y %H:%M',time.localtime()) +"] "+self.auteur + ' : ' + self.message + '\n'
+      		self.write_file("/var/www/html","histo0.txt", info)
 
 
 	def on_privmsg(self, serv, ev):
